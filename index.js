@@ -54,7 +54,13 @@ try {
         const newEquipment = req.body;
         const result = await equipmentCollection.insertOne(newEquipment);
         res.send(result);
-    })
+    });
+
+    app.get('/equipment', async(req, res) => {
+        const cursor = equipmentCollection.find();
+        const result = await cursor.toArray();
+        res.send(result);
+    });
 
 
     // Send a ping to confirm a successful connection
