@@ -35,6 +35,28 @@ async function run() {
 try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
+
+    const userCollection = client.db('SportsDB').collection('users');
+    const equipmentCollection = client.db('SportsDB').collection('equipment');
+
+
+    // create user 
+    app.post('/users', async(req, res) => {
+        const newUser = req.body;
+        const result = await userCollection.insertOne(newUser);
+        res.send(result);
+    });
+
+
+
+    // equipment relative api 
+    app.post('/equipment', async(req, res) => {
+        const newEquipment = req.body;
+        const result = await equipmentCollection.insertOne(newEquipment);
+        res.send(result);
+    })
+
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
