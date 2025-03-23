@@ -63,10 +63,10 @@ try {
     });
 
 
-    app.get('/equipment/:id', async(req, res) => {
+    app.get('/details:id', async(req, res) => {
         const id = req.params.id;
         const query = {_id: new ObjectId(id)}
-        const result = await coffeeCollection.findOne(query)
+        const result = await equipmentCollection.findOne(query)
         res.send(result);
     })
 
