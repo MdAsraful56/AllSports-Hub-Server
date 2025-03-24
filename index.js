@@ -38,6 +38,7 @@ try {
 
     const userCollection = client.db('SportsDB').collection('users');
     const equipmentCollection = client.db('SportsDB').collection('equipment');
+    const reviewCollection = client.db('SportsDB'.collection('review'));
 
 
     // create user 
@@ -47,6 +48,13 @@ try {
         res.send(result);
     });
 
+
+    // client review post 
+    app.post('/review', async(req, res) => {
+        const newReview = req.body;
+        const result = await reviewCollection.insertOne(newReview);
+        res.send(result);
+    })
 
 
     // equipment relative api 
