@@ -38,7 +38,7 @@ try {
 
     const userCollection = client.db('SportsDB').collection('users');
     const equipmentCollection = client.db('SportsDB').collection('equipment');
-    const reviewCollection = client.db('SportsDB'.collection('review'));
+    const reviewCollection = client.db('SportsDB').collection('review');
 
 
     // create user 
