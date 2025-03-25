@@ -56,6 +56,14 @@ try {
         res.send(result);
     })
 
+    // client review get 
+    app.get('/review', async(req, res) => {
+        const cursor = reviewCollection.find();
+        const result = await cursor.toArray();
+        // console.log("Reviews Data:", result); // Debugging
+        res.send(result);
+    })
+
 
     // equipment relative api 
     app.post('/equipment', async(req, res) => {
